@@ -91,7 +91,7 @@ begin
 	wen(1) <= '1' when addReg = "01" and wReg = '1' else '0';
 	wen(2) <= '1' when addReg = "10" and wReg = '1' else '0';
 	wen(3) <= '1' when addReg = "11" and wReg = '1' else '0';
-   
+	
 
 	addReg <= IR(1 downto 0) when state = sREAD else IR(9 downto 8);   -- index of the register to write
 	muxRegIn <= dataR when state = sREAD else outalu;
@@ -108,8 +108,6 @@ begin
 				X"0000" when inst = iless and rs1>=rs2 else
 				RS1 + RS2;    --  default operation: iADD
 
-	
-
    -- IR and PC registers
    --  
 	R_IR: entity work.Reg16bit port map(ck => ck, rst => rst, we => wIR, D => dataR, Q => IR);
@@ -121,20 +119,23 @@ begin
    --++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    -- control block  - manages the execution of instructions
    --++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-	inst <=	iREAD      when ir(15 downto 12) = x"0" else    -- decode the current instruction
+	-- DECODIFICACAO DAS INTRUCOES
+	inst <=	iREAD      when ir(15 downto 12) = x"0" else  
+	iWRITE 		when ir(15 downto 12) = x"1" else 	 				-- decode the current instruction
 	iXOR      when ir(15 downto 12) = x"4" else
 	iSUB      when ir(15 downto 12) = x"5" else
 	iadd      when ir(15 downto 12) = x"6" else
-	iless      when ir(15 downto 12) = x"7" else		
+	iless      when ir(15 downto 12) = x"7" else	
 	iEND;
 
-	wPC <= '1' when state = sREAD OR STATE = SALU
-		else '0';
+	wPC <= '1' when state = sREAD OR STATE = SALU 
+		OR STATE = sWRITE else '0';
 	wReg <= '1' when state = sREAD or state = salu 
 		else '0';
 	wIR <= '1' when state = sFETCH else '0';
 
+
+	-- MAQUINA DE ESTADOS
 	process(ck, rst)
 	begin
 		if rst = '1' then
@@ -148,6 +149,8 @@ begin
 						state <= sEND;
 					elsif inst = iREAD then
 						state <= sREAD;
+					elsif inst = iWRITE then
+						state <= sWRITE;
 					ELSE 
 						STATE <= SALU;
 					end if	;

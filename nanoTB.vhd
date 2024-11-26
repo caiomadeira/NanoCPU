@@ -26,12 +26,18 @@ architecture TB of NanoCPU_TB is
 		5 => X"5101",
 		6 => X"4300",
 		7 => X"7210",
-		8 => X"F000",
+		-- write memory
+		8 => X"10F0", -- instrucao (numero) | endereco (0F = 15) | registrador (0)
+		9 => X"1101",
+		10 => X"1112",
+		11 => X"F000",
+
 		-- FIM
-		30 => X"1111",
-		31 => X"2222",
-		32 => X"3333",
-		33 => X"4444",
+		-- POSICOES NA MEMORIA
+		30 => X"5555",
+		31 => X"3333",
+		32 => X"0001",
+		--33 => X"4444",
 		others => (others => '0')
 	);
 
