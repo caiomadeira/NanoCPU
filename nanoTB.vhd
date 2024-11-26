@@ -34,10 +34,10 @@ architecture TB of NanoCPU_TB is
 
 		-- FIM
 		-- POSICOES NA MEMORIA
-		30 => X"5555",
-		31 => X"3333",
-		32 => X"0001",
-		--33 => X"4444",
+		30 => X"1111",
+		31 => X"2222",
+		32 => X"3333",
+		33 => X"4444",
 		others => (others => '0')
 	);
 

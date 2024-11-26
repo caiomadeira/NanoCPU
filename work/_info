@@ -1,7 +1,8 @@
 m255
 K4
 z2
-!s99 nomlopt
+Z0 !s99 nomlopt
+R0
 !s11e vcom 2021.3 2021.07, Jul 13 2021
 13
 !s112 1.1
@@ -9,12 +10,12 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 d/home/24280006/Desktop/NanoCPU
+Z1 d/home/24280006/Desktop/NanoCPU
 T_opt
-Z1 !s110 1732624019
-V9TL4HT:c]mM>b<O`hU2cC2
+!s110 1732624448
+V:FSLijG1]?zAj`B4W]0CL3
 04 10 2 work nanocpu_tb tb 1
-=1-000ae431a4f1-6745be93-b3f00-1dbc
+=1-000ae431a4f1-6745c040-52c80-1f8a
 !s124 OEM100
 o-quiet -auto_acc_if_foreign -work work +acc=lprn
 tCvgOpt 0
@@ -27,7 +28,7 @@ Z4 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z5 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z6 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
 !i122 0
-R0
+R1
 Z7 8nanoCPU.vhd
 Z8 FnanoCPU.vhd
 l0
@@ -36,20 +37,20 @@ V;^[1?I109^CDZW4WD;60[1
 !s100 Yz@c;oGDbakdRHC9kI`JG1
 Z9 OL;C;2021.3;73
 32
-R1
+Z10 !s110 1732624447
 !i10b 1
-Z10 !s108 1732624019.000000
-Z11 !s90 -reportprogress|300|nanoCPU.vhd|
-Z12 !s107 nanoCPU.vhd|
+Z11 !s108 1732624447.000000
+Z12 !s90 -reportprogress|300|nanoCPU.vhd|
+Z13 !s107 nanoCPU.vhd|
 !i113 0
-Z13 tExplicit 1 CvgOpt 0
+Z14 tExplicit 1 CvgOpt 0
 Ancpu
-Z14 DEx4 work 8 reg16bit 0 22 CGBQjhDGO8DaAoN=kL6cI3
+Z15 DEx4 work 8 reg16bit 0 22 CGBQjhDGO8DaAoN=kL6cI3
 R3
 R4
 R5
 R6
-Z15 DEx4 work 7 nanocpu 0 22 ;^[1?I109^CDZW4WD;60[1
+Z16 DEx4 work 7 nanocpu 0 22 ;^[1?I109^CDZW4WD;60[1
 !i122 0
 l71
 L54 112
@@ -57,38 +58,38 @@ VSKeHG0<k_4W9cUfN^N<Cj3
 !s100 R]XY]BgkXfKPmPRC?`;fe3
 R9
 32
-R1
-!i10b 1
 R10
+!i10b 1
 R11
 R12
-!i113 0
 R13
+!i113 0
+R14
 Enanocpu_tb
-Z16 w1732623662
+Z17 w1732624439
 R4
 R3
 R5
 R6
 !i122 1
-R0
-Z17 8nanoTB.vhd
-Z18 FnanoTB.vhd
+R1
+Z18 8nanoTB.vhd
+Z19 FnanoTB.vhd
 l0
 L6 1
 Vozd3DjmoARXg`f0a3Va6Y2
 !s100 ]HlS7lDH?jDaEVgB_?7[40
 R9
 32
-R1
-!i10b 1
 R10
-Z19 !s90 -reportprogress|300|nanoTB.vhd|
-Z20 !s107 nanoTB.vhd|
+!i10b 1
+R11
+Z20 !s90 -reportprogress|300|nanoTB.vhd|
+Z21 !s107 nanoTB.vhd|
 !i113 0
-R13
+R14
 Atb
-R15
+R16
 R4
 R3
 R5
@@ -97,23 +98,23 @@ DEx4 work 10 nanocpu_tb 0 22 ozd3DjmoARXg`f0a3Va6Y2
 !i122 1
 l44
 L9 64
-VFkJ>g>3j>h5Nj=7AERJRR3
-!s100 JkXV0N@a0gHF2=63n]9NH3
+V@[6J^HPhmbm[<czgOJ>Lz0
+!s100 CmMZP4U_LU_=MPYbEJXSJ1
 R9
 32
-R1
-!i10b 1
 R10
-R19
+!i10b 1
+R11
 R20
+R21
 !i113 0
-R13
+R14
 Ereg16bit
 R2
 R5
 R6
 !i122 0
-R0
+R1
 R7
 R8
 l0
@@ -122,17 +123,17 @@ VCGBQjhDGO8DaAoN=kL6cI3
 !s100 lQZYcOH06YYadR2NN`ESR0
 R9
 32
-R1
-!i10b 1
 R10
+!i10b 1
 R11
 R12
-!i113 0
 R13
+!i113 0
+R14
 Areg16b
 R5
 R6
-R14
+R15
 !i122 0
 l23
 L22 13
@@ -140,10 +141,10 @@ VUc=VkK>`Q8Tl8o84CziEX3
 !s100 >gOHm@fW5kF5W<dzKI7g40
 R9
 32
-R1
-!i10b 1
 R10
+!i10b 1
 R11
 R12
-!i113 0
 R13
+!i113 0
+R14
