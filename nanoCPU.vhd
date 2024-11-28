@@ -130,7 +130,7 @@ begin
    --++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	-- DECODIFICACAO DAS INTRUCOES
 	inst <=	iREAD      when ir(15 downto 12) = x"0" else  
-			iWRITE 		when ir(15 downto 12) = x"1" else 	 				-- decode the current instruction
+			iWRITE 		when ir(15 downto 12) = x"1" else 	 			-- decode the current instruction
 			iJMP 		when ir(15 downto 12) = x"2" else
 			iBRANCH 	when ir(15 downto 12) = x"3" else
 			iXOR      when ir(15 downto 12) = x"4" else
