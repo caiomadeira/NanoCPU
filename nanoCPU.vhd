@@ -107,12 +107,12 @@ begin
 				-----------------------------------------
 				-----------------------------------------
 				-- outalu: TEST 1 (iINC, iDEC) ----------
-				x"8110" when inst = iINC and RS1 + 1 else
-				x"9330" when inst = iDEC and RS1 - 1 else
+				--x"8110" when inst = iINC and RS1 + 1 else
+				--x"9330" when inst = iDEC and RS1 - 1 else
 				-----------------------------------------
 				-- outalu: TEST 2 (iINC, iDEC) ----------
-				x"8110" when inst = iINC and RS1 + 1 else
-				x"9330" when inst = iDEC and RS1 - 1 else
+				RS1 + 1 when inst = iINC else
+				RS1 - 1 when inst = iDEC else
 				-----------------------------------------
 				x"0001" when inst = iless and rs1<rs2 else
 				X"0000" when inst = iless and rs1>=rs2 else

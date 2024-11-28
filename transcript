@@ -16,7 +16,7 @@ do sim.do
 # vmap work work 
 # Modifying modelsim.ini
 # Model Technology ModelSim SE-64 vcom 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 08:34:35 on Nov 28,2024
+# Start time: 09:05:49 on Nov 28,2024
 # vcom -reportprogress 300 nanoCPU.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -28,10 +28,10 @@ do sim.do
 # -- Compiling entity NanoCPU
 # -- Compiling architecture NCPU of NanoCPU
 # -- Loading entity Reg16bit
-# End time: 08:34:35 on Nov 28,2024, Elapsed time: 0:00:00
+# End time: 09:05:49 on Nov 28,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim SE-64 vcom 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 08:34:35 on Nov 28,2024
+# Start time: 09:05:49 on Nov 28,2024
 # vcom -reportprogress 300 nanoTB.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -41,10 +41,10 @@ do sim.do
 # -- Compiling entity NanoCPU_TB
 # -- Compiling architecture TB of NanoCPU_TB
 # -- Loading entity NanoCPU
-# End time: 08:34:35 on Nov 28,2024, Elapsed time: 0:00:00
+# End time: 09:05:49 on Nov 28,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -voptargs="+acc=lprn" -t ps work.nanoCPU_TB 
-# Start time: 08:34:35 on Nov 28,2024
+# Start time: 09:05:49 on Nov 28,2024
 # ** Note: (vsim-3812) Design is being optimized...
 # Loading std.standard
 # Loading std.textio(body)
@@ -56,219 +56,8 @@ do sim.do
 # Loading work.reg16bit(reg16b)#1
 # 1
 # 1
-do sim.do
-# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is 24280006@l3086089.
-# ** Warning: (vlib-34) Library already exists at "work".
-# Errors: 0, Warnings: 1
-# Model Technology ModelSim SE-64 vmap 2021.3 Lib Mapping Utility 2021.07 Jul 13 2021
-# vmap work work 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vcom 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 08:38:37 on Nov 28,2024
-# vcom -reportprogress 300 nanoCPU.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity Reg16bit
-# -- Compiling architecture Reg16b of Reg16bit
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling entity NanoCPU
-# -- Compiling architecture NCPU of NanoCPU
-# -- Loading entity Reg16bit
-# End time: 08:38:37 on Nov 28,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim SE-64 vcom 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 08:38:37 on Nov 28,2024
-# vcom -reportprogress 300 nanoTB.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling entity NanoCPU_TB
-# -- Compiling architecture TB of NanoCPU_TB
-# -- Loading entity NanoCPU
-# End time: 08:38:37 on Nov 28,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 08:38:38 on Nov 28,2024, Elapsed time: 0:04:03
-# Errors: 0, Warnings: 0
-# vsim -voptargs="+acc=lprn" -t ps work.nanoCPU_TB 
-# Start time: 08:38:38 on Nov 28,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.nanocpu_tb(tb)#1
-# Loading work.nanocpu(ncpu)#1
-# Loading work.reg16bit(reg16b)#1
-# 1
-# 1
-do sim.do
-# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is 24280006@l3086089.
-# ** Warning: (vlib-34) Library already exists at "work".
-# Errors: 0, Warnings: 1
-# Model Technology ModelSim SE-64 vmap 2021.3 Lib Mapping Utility 2021.07 Jul 13 2021
-# vmap work work 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vcom 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 08:42:21 on Nov 28,2024
-# vcom -reportprogress 300 nanoCPU.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity Reg16bit
-# -- Compiling architecture Reg16b of Reg16bit
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling entity NanoCPU
-# -- Compiling architecture NCPU of NanoCPU
-# -- Loading entity Reg16bit
-# End time: 08:42:21 on Nov 28,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim SE-64 vcom 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 08:42:21 on Nov 28,2024
-# vcom -reportprogress 300 nanoTB.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling entity NanoCPU_TB
-# -- Compiling architecture TB of NanoCPU_TB
-# -- Loading entity NanoCPU
-# End time: 08:42:21 on Nov 28,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 08:42:22 on Nov 28,2024, Elapsed time: 0:03:44
-# Errors: 0, Warnings: 0
-# vsim -voptargs="+acc=lprn" -t ps work.nanoCPU_TB 
-# Start time: 08:42:22 on Nov 28,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.nanocpu_tb(tb)#1
-# Loading work.nanocpu(ncpu)#1
-# Loading work.reg16bit(reg16b)#1
-# 1
-# 1
-do sim.do
-# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is 24280006@l3086089.
-# ** Warning: (vlib-34) Library already exists at "work".
-# Errors: 0, Warnings: 1
-# Model Technology ModelSim SE-64 vmap 2021.3 Lib Mapping Utility 2021.07 Jul 13 2021
-# vmap work work 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vcom 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 08:56:50 on Nov 28,2024
-# vcom -reportprogress 300 nanoCPU.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity Reg16bit
-# -- Compiling architecture Reg16b of Reg16bit
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling entity NanoCPU
-# -- Compiling architecture NCPU of NanoCPU
-# -- Loading entity Reg16bit
-# ** Error: nanoCPU.vhd(107): (vcom-1581) No feasible entries for infix operator '-'.
-# ** Error: nanoCPU.vhd(107): Type error resolving infix expression "-" as type std.STANDARD.BOOLEAN.
-# ** Error: nanoCPU.vhd(108): near "0001": (vcom-1576) expecting ';'.
-# ** Note: nanoCPU.vhd(173): VHDL Compiler exiting
-# End time: 08:56:50 on Nov 28,2024, Elapsed time: 0:00:00
-# Errors: 3, Warnings: 0
-# ** Error: /soft64/mentor/ferramentas/modelsim/2021/linux_x86_64/vcom failed.
-# Error in macro ./sim.do line 5
-# /soft64/mentor/ferramentas/modelsim/2021/linux_x86_64/vcom failed.
-#     while executing
-# "vcom nanoCPU.vhd"
-do sim.do
-# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is 24280006@l3086089.
-# ** Warning: (vlib-34) Library already exists at "work".
-# Errors: 0, Warnings: 1
-# Model Technology ModelSim SE-64 vmap 2021.3 Lib Mapping Utility 2021.07 Jul 13 2021
-# vmap work work 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vcom 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 08:58:08 on Nov 28,2024
-# vcom -reportprogress 300 nanoCPU.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity Reg16bit
-# -- Compiling architecture Reg16b of Reg16bit
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling entity NanoCPU
-# -- Compiling architecture NCPU of NanoCPU
-# -- Loading entity Reg16bit
-# ** Error: nanoCPU.vhd(108): (vcom-1581) No feasible entries for infix operator '-'.
-# ** Error: nanoCPU.vhd(108): Type error resolving infix expression "-" as type std.STANDARD.BOOLEAN.
-# ** Note: nanoCPU.vhd(175): VHDL Compiler exiting
-# End time: 08:58:09 on Nov 28,2024, Elapsed time: 0:00:01
-# Errors: 2, Warnings: 0
-# ** Error: /soft64/mentor/ferramentas/modelsim/2021/linux_x86_64/vcom failed.
-# Error in macro ./sim.do line 5
-# /soft64/mentor/ferramentas/modelsim/2021/linux_x86_64/vcom failed.
-#     while executing
-# "vcom nanoCPU.vhd"
-do sim.do
-# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is 24280006@l3086089.
-# ** Warning: (vlib-34) Library already exists at "work".
-# Errors: 0, Warnings: 1
-# Model Technology ModelSim SE-64 vmap 2021.3 Lib Mapping Utility 2021.07 Jul 13 2021
-# vmap work work 
-# Modifying modelsim.ini
-# Model Technology ModelSim SE-64 vcom 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 08:58:22 on Nov 28,2024
-# vcom -reportprogress 300 nanoCPU.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Compiling entity Reg16bit
-# -- Compiling architecture Reg16b of Reg16bit
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling entity NanoCPU
-# -- Compiling architecture NCPU of NanoCPU
-# -- Loading entity Reg16bit
-# End time: 08:58:22 on Nov 28,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim SE-64 vcom 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 08:58:22 on Nov 28,2024
-# vcom -reportprogress 300 nanoTB.vhd 
-# -- Loading package STANDARD
-# -- Loading package TEXTIO
-# -- Loading package std_logic_1164
-# -- Loading package std_logic_arith
-# -- Loading package STD_LOGIC_UNSIGNED
-# -- Compiling entity NanoCPU_TB
-# -- Compiling architecture TB of NanoCPU_TB
-# -- Loading entity NanoCPU
-# End time: 08:58:22 on Nov 28,2024, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# End time: 08:58:23 on Nov 28,2024, Elapsed time: 0:16:01
-# Errors: 2, Warnings: 0
-# vsim -voptargs="+acc=lprn" -t ps work.nanoCPU_TB 
-# Start time: 08:58:23 on Nov 28,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.std_logic_arith(body)
-# Loading ieee.std_logic_unsigned(body)
-# Loading work.nanocpu_tb(tb)#1
-# Loading work.nanocpu(ncpu)#1
-# Loading work.reg16bit(reg16b)#1
-# 1
-# 1
 # Break key hit
 # Break key hit
 # Break key hit
-# End time: 09:04:13 on Nov 28,2024, Elapsed time: 0:05:50
+# End time: 09:08:14 on Nov 28,2024, Elapsed time: 0:02:25
 # Errors: 0, Warnings: 0
