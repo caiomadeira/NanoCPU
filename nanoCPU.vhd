@@ -53,7 +53,7 @@ end NanoCPU;
 
 architecture NCPU of NanoCPU is
 
-    type instType is (iREAD, iWRITE, iJMP, iBRANCH, iXOR, iSUB, iADD, iLESS, iEND);
+    type instType is (iREAD, iWRITE, iJMP, iBRANCH, iXOR, iSUB, iADD, iLESS, iINC, iDEC, iEND);
     signal inst: instType;   
 
     type bankType is array(0 to 3) of std_logic_vector(15 downto 0);
@@ -65,7 +65,7 @@ architecture NCPU of NanoCPU is
 
     signal IR, RS1, RS2, muxRegIn, outalu, muxPC, PC, less: std_logic_vector(15 downto 0);
 
-   type stateType is (sFETCH, sEXE, sREAD, sWRITE, sEND, salu); --complete
+   type stateType is (sFETCH, sEXE, sREAD, sWRITE, sEND, sALU, sBRANCH, sJMP); --complete
     signal state: stateType;
 
 begin
@@ -104,6 +104,16 @@ begin
 	outalu <=	RS2           when inst = iWRITE else  -- data to be written is the second register
 				rs1 xor rs2 when inst = ixor else
 				rs1 - rs2 when inst = isub else
+				-----------------------------------------
+				-----------------------------------------
+				-- outalu: TEST 1 (iINC, iDEC) ----------
+				x"8110" when inst = iINC and RS1 + 1 else
+				x"9330" when inst = iDEC and RS1 - 1 else
+				-----------------------------------------
+				-- outalu: TEST 2 (iINC, iDEC) ----------
+				x"8110" when inst = iINC and RS1 + 1 else
+				x"9330" when inst = iDEC and RS1 - 1 else
+				-----------------------------------------
 				x"0001" when inst = iless and rs1<rs2 else
 				X"0000" when inst = iless and rs1>=rs2 else
 				RS1 + RS2;    --  default operation: iADD
@@ -113,24 +123,27 @@ begin
 	R_IR: entity work.Reg16bit port map(ck => ck, rst => rst, we => wIR, D => dataR, Q => IR);
 	R_PC: entity work.Reg16bit port map(ck => ck, rst => rst, we => wPC, D => muxPC, Q => PC);
 
-	muxPC <=  -- complete according to the jump conditions
-				PC + 1;
+	muxPC <= x"00" & IR(11 downto 4) when state = sJMP or (state = sBRANCH and RS2(0) = '1') else PC + 1;
 
    --++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    -- control block  - manages the execution of instructions
    --++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	-- DECODIFICACAO DAS INTRUCOES
 	inst <=	iREAD      when ir(15 downto 12) = x"0" else  
-	iWRITE 		when ir(15 downto 12) = x"1" else 	 				-- decode the current instruction
-	iXOR      when ir(15 downto 12) = x"4" else
-	iSUB      when ir(15 downto 12) = x"5" else
-	iadd      when ir(15 downto 12) = x"6" else
-	iless      when ir(15 downto 12) = x"7" else	
-	iEND;
+			iWRITE 		when ir(15 downto 12) = x"1" else 	 				-- decode the current instruction
+			iJMP 		when ir(15 downto 12) = x"2" else
+			iBRANCH 	when ir(15 downto 12) = x"3" else
+			iXOR      when ir(15 downto 12) = x"4" else
+			iSUB      when ir(15 downto 12) = x"5" else
+			iadd      when ir(15 downto 12) = x"6" else
+			iless      when ir(15 downto 12) = x"7" else	
+			iINC		when ir(15 downto 12) = x"8" else
+			iDEC		when ir(15 downto 12) = x"9" else
+			
+			iEND;
 
-	wPC <= '1' when state = sREAD OR STATE = SALU 
-		OR STATE = sWRITE else '0';
-	wReg <= '1' when state = sREAD or state = salu 
+	wPC <= '1' when state = sREAD OR STATE = sALU OR STATE = sWRITE OR state = sJMP OR state = sBRANCH else '0';
+	wReg <= '1' when state = sREAD or state = sALU 
 		else '0';
 	wIR <= '1' when state = sFETCH else '0';
 
@@ -151,6 +164,10 @@ begin
 						state <= sREAD;
 					elsif inst = iWRITE then
 						state <= sWRITE;
+					elsif inst = iJMP then
+						state <= sJMP;
+					elsif inst = iBRANCH then
+						state <= sBRANCH;
 					ELSE 
 						STATE <= SALU;
 					end if	;
