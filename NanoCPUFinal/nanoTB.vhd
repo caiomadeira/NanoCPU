@@ -18,32 +18,16 @@ architecture TB of NanoCPU_TB is
 
 	
 	signal memory: memoryArray := (
-		0 => X"01E0", -- R0 = PMEM[30]
-		1 => X"01F1", -- R1 = PMEM[31]
-		2 =>X"0202" , -- R2 = PMEM[32]
-		3 => X"0213", -- R3 = PMEM[33]
-		4 => X"6003",
-		5 => X"5101",
-		6 => X"4300",
-		7 => X"7210",
-		-- write memory
-		8 => X"10F0", -- instrucao (numero) | endereco (0F = 15) | registrador (0)
-		9 => X"1101",
-		10 => X"1112",
-		11 => X"3FF2", -- salta para 25
-		20 => X"8000", -- INC R0
-		21 => X"8110", -- INC R1
-		22 => X"9220", -- DEC R2
-		23 => X"9330", -- DEC R3
-		24 => X"F000", -- FIM 
-
-		-- FIM
-		-- POSICOES NA MEMORIA
-		30 => X"1111",
-		31 => X"2222",
-		32 => X"3333",
-		33 => X"4444",
-		255 => X"2140",
+		0 => X"4000", -- R0 = PMEM[30]
+		1 => X"4111", -- R1 = PMEM[31]
+		2 =>X"0093" , -- R2 = PMEM[32]
+		3 => X"6110", -- R3 = PMEM[33]
+		4 => X"8000",
+		5 => X"7203",
+		6 => X"3032",
+		7 => X"10A1",
+		8 => X"F000", -- instrucao (numero) | endereco (0F = 15) | registrador (0)
+		9 => X"000A",
 		others => (others => '0')
 	);
 
