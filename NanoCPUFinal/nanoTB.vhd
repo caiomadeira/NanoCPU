@@ -19,7 +19,8 @@ architecture TB of NanoCPU_TB is
 	
 	signal memory: memoryArray := (
 		0 => X"4000", -- R0 = PMEM[30]
-		1 => X"4111", -- R1 = PMEM[31]
+		--1 => X"4111", -- R1 = PMEM[31]
+		1 => X"4120",
 		2 => X"0093" , -- R2 = PMEM[32]
 		3 => X"6110", -- R3 = PMEM[33]
 		4 => X"8000",
@@ -28,8 +29,11 @@ architecture TB of NanoCPU_TB is
 		7 => X"10A1",
 		8 => X"F000", -- instrucao (numero) | endereco (0F = 15) | registrador (0)
 		9 => X"000A",
+		20 => X"000E", -- 14 primeiros elementos da série
+		21 => X"0000", -- Recebe os valores da sére
 		others => (others => '0')
 	);
+
 
 begin
 
@@ -64,5 +68,6 @@ begin
 -- 	wait for 300ns;
 -- 	assert false report "Fim da simulação." severity failure; 
 -- end process;
+
 
 end TB;

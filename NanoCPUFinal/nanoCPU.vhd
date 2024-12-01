@@ -90,7 +90,7 @@ begin
 	wen(0) <= '1' when addReg = "00" and wReg = '1' else '0';
 	wen(1) <= '1' when addReg = "01" and wReg = '1' else '0';
 	wen(2) <= '1' when addReg = "10" and wReg = '1' else '0';
-	wen(3) <= '1' when addReg = "11" and wReg = '1' else '0';
+	wen(3) <= '1' when addReg = "11" and wReg = '1' else '0'; -- R3 é um contador pra N e um registrador temp
 	
 
 	addReg <= IR(1 downto 0) when state = sREAD else IR(9 downto 8);   -- index of the register to write
@@ -100,23 +100,23 @@ begin
 	RS2 <= reg(CONV_INTEGER(IR(1 downto 0)));   
 
    -- arithmetic and logic unit 
-   -- 
-	outalu <=	RS2           when inst = iWRITE else  -- data to be written is the second register
+   --        
+
+	outalu <=	RS2 when inst = iWRITE else  -- data to be written is the second register
 				rs1 xor rs2 when inst = ixor else
 				rs1 - rs2 when inst = isub else
-				-----------------------------------------
-				-----------------------------------------
-				-- outalu: TEST 1 (iINC, iDEC) ----------
-				--x"8110" when inst = iINC and RS1 + 1 else
-				--x"9330" when inst = iDEC and RS1 - 1 else
-				-----------------------------------------
-				-- outalu: TEST 2 (iINC, iDEC) ----------
+				-- outalu: (iINC, iDEC) ----------
 				RS1 + 1 when inst = iINC else
 				RS1 - 1 when inst = iDEC else
 				-----------------------------------------
-				x"0001" when inst = iless and rs1<rs2 else
-				X"0000" when inst = iless and rs1>=rs2 else
-				RS1 + RS2;    --  default operation: iADD
+				-- iLESS
+				less when inst = iLESS else
+				-- x"0001" when inst = iless and rs1<rs2 else
+				-- X"0000" when inst = iless and rs1>=rs2 else
+				-----------------------------------
+				RS1 + RS2;    --  default operation: iADD (RS1 + RS2 when inst = iADD else)
+	less <= X"0001" when RS1 < RS2 else x"0000";
+
 	---------------------------
 	-- NOVA LINHA ATIV 
 	---less <= X"0001" when RSI < RS2 else x"0000";
@@ -127,9 +127,13 @@ begin
 	R_PC: entity work.Reg16bit port map(ck => ck, rst => rst, we => wPC, D => muxPC, Q => PC);
 
 	muxPC <= x"00" & IR(11 downto 4) 
-	when state = sJMP 
-	or (state = sBRANCH and RS2(0) = '1') 
+    --when state = sJMP or (state = sBRANCH and RS2(15) = '0') -- RS2(15) representa o bit de sinal, assim indicando se o valor é negativo
+	when state = sJMP or (state = sBRANCH and RS2(0) = '1')
 	else PC + 1;
+
+	-- muxPC <= x"00" & IR(11 downto 4) 
+	-- when state = sJMP or (state = sBRANCH and RS2(0) = '1') 
+	-- else PC + 1;
 
    --++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    -- control block  - manages the execution of instructions
@@ -151,23 +155,22 @@ begin
 	-- wPC ---------------------------
 	----------------------------------
 	wPC <= '1' when state = sREAD 
-	OR STATE = sALU 
-	OR STATE = sWRITE 
-	OR state = sJMP 
-	OR state = sBRANCH 
-	else '0';
+			OR STATE = sALU 
+			OR STATE = sWRITE 
+			OR state = sJMP 
+			OR state = sBRANCH 
+			else '0';
 	----------------------------------
 	-- wReg ---------------------------
 	----------------------------------
 	wReg <= '1' when state = sREAD 
-		or state = sALU 
-		else '0';
+			or state = sALU 
+			else '0';
 
 	----------------------------------
 	-- wIR ---------------------------
 	----------------------------------
-	wIR <= '1' when state = sFETCH 
-		else '0';
+	wIR <= '1' when state = sFETCH else '0';
 
 
 	-- MAQUINA DE ESTADOS
