@@ -20,7 +20,7 @@ architecture TB of NanoCPU_TB is
 	signal memory: memoryArray := (
 		0 => X"4000", -- R0 = PMEM[30]
 		1 => X"4111", -- R1 = PMEM[31]
-		2 =>X"0093" , -- R2 = PMEM[32]
+		2 => X"0093" , -- R2 = PMEM[32]
 		3 => X"6110", -- R3 = PMEM[33]
 		4 => X"8000",
 		5 => X"7203",
@@ -58,5 +58,11 @@ begin
 	end process;
 
 	dataR <= memory(CONV_INTEGER(address));   -- read from memory
+-- simulação acaba apos 300 ns
+-- Crio um novo processo p/ encrrar a simulação usando ASSERT.
+-- process begin
+-- 	wait for 300ns;
+-- 	assert false report "Fim da simulação." severity failure; 
+-- end process;
 
 end TB;

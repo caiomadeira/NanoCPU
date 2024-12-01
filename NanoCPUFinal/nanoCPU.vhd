@@ -117,13 +117,19 @@ begin
 				x"0001" when inst = iless and rs1<rs2 else
 				X"0000" when inst = iless and rs1>=rs2 else
 				RS1 + RS2;    --  default operation: iADD
-
-   -- IR and PC registers
+	---------------------------
+	-- NOVA LINHA ATIV 
+	---less <= X"0001" when RSI < RS2 else x"0000";
+   ------------------------------------
+	-- IR and PC registers
    --  
 	R_IR: entity work.Reg16bit port map(ck => ck, rst => rst, we => wIR, D => dataR, Q => IR);
 	R_PC: entity work.Reg16bit port map(ck => ck, rst => rst, we => wPC, D => muxPC, Q => PC);
 
-	muxPC <= x"00" & IR(11 downto 4) when state = sJMP or (state = sBRANCH and RS2(0) = '1') else PC + 1;
+	muxPC <= x"00" & IR(11 downto 4) 
+	when state = sJMP 
+	or (state = sBRANCH and RS2(0) = '1') 
+	else PC + 1;
 
    --++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    -- control block  - manages the execution of instructions
@@ -141,11 +147,27 @@ begin
 			iDEC		when ir(15 downto 12) = x"9" else
 			
 			iEND;
-
-	wPC <= '1' when state = sREAD OR STATE = sALU OR STATE = sWRITE OR state = sJMP OR state = sBRANCH else '0';
-	wReg <= '1' when state = sREAD or state = sALU 
+	----------------------------------
+	-- wPC ---------------------------
+	----------------------------------
+	wPC <= '1' when state = sREAD 
+	OR STATE = sALU 
+	OR STATE = sWRITE 
+	OR state = sJMP 
+	OR state = sBRANCH 
+	else '0';
+	----------------------------------
+	-- wReg ---------------------------
+	----------------------------------
+	wReg <= '1' when state = sREAD 
+		or state = sALU 
 		else '0';
-	wIR <= '1' when state = sFETCH else '0';
+
+	----------------------------------
+	-- wIR ---------------------------
+	----------------------------------
+	wIR <= '1' when state = sFETCH 
+		else '0';
 
 
 	-- MAQUINA DE ESTADOS
@@ -170,7 +192,7 @@ begin
 						state <= sBRANCH;
 					ELSE 
 						STATE <= SALU;
-					end if	;
+					end if;
 				when sEND =>
 					state <= sEND;
 				when others =>
