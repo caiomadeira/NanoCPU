@@ -15,5 +15,5 @@ set StdArithNoWarnings 1
 set StdVitalGlitchNoWarnings 1
 
 # Aqui, executa a simulação
-run 300  ns ;# configura o tempo de simulação
+run 800  ns ;# configura o tempo de simulação
 
