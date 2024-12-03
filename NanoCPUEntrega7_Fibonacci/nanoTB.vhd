@@ -35,6 +35,7 @@ architecture TB of NanoCPU_TB is
 		13 => X"F000", -- END
 		-- DADOS
 		20 => X"000E", -- N (14)
+		--20 => X"000F", -- Para teste
 		21 => X"0000", -- recebe os valores da série
 		others => (others => '0')
 	);

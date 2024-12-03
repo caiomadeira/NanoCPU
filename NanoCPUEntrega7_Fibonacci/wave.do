@@ -14,6 +14,7 @@ add wave -noupdate /nanoCPU_TB/CPU/state
 add wave -noupdate /nanoCPU_TB/CPU/inst
 
 add wave -noupdate -divider {PC e IR}
+add wave -noupdate -radix unsigned /nanoCPU_TB/CPU/i
 add wave -noupdate -radix unsigned /nanoCPU_TB/CPU/IR
 add wave -noupdate -radix unsigned /nanoCPU_TB/CPU/PC
 
@@ -25,6 +26,7 @@ add wave -noupdate -color Yellow -radix unsigned /nanoCPU_TB/CPU/reg(3)
 
 add wave -noupdate -divider memoria
 
+add wave -noupdate -radix unsigned /nanoCPU_TB/CPU/we
 add wave -noupdate -radix unsigned /nanoCPU_TB/memory(20)
 add wave -noupdate -radix unsigned /nanoCPU_TB/memory(21)
 
